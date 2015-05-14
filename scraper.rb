@@ -55,6 +55,7 @@ def scrape_table(doc, comment_url)
       ScraperWiki.save_sqlite(['council_reference'], record)
     else
       puts "Skipping already saved record " + record['council_reference']
+      ScraperWiki.delete("* from data")
     end
   end
 end
