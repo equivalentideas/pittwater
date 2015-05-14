@@ -50,13 +50,8 @@ def scrape_table(doc, comment_url)
     }
     record["comment_url"] = comment_url + CGI::escape("Development Application Enquiry: " + record["council_reference"])
 
-    # p record
-    if (ScraperWiki.select("* from data where `council_reference`='#{record['council_reference']}'").empty? rescue true)
-      ScraperWiki.save_sqlite(['council_reference'], record)
-    else
-      puts "Skipping already saved record " + record['council_reference']
-      ScraperWiki.execute("delete * from data")
-    end
+  
+    ScraperWiki.sqliteexecute("delete * from data")
   end
 end
 
