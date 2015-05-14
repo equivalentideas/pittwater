@@ -51,7 +51,7 @@ def scrape_table(doc, comment_url)
     record["comment_url"] = comment_url + CGI::escape("Development Application Enquiry: " + record["council_reference"])
 
   
-    ScraperWiki.sqliteexecute("delete * from data")
+    ScraperWiki.sqliteexecute("TRUNCATE TABLE data")
   end
 end
 
